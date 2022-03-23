@@ -21,8 +21,8 @@ namespace Project2.Models
         [Required]
         public TimeSlots TimeSlot { get; set; }
         [Required]
-        public EmailAddressAttribute EmailAddress { get; set; }
-        public PhoneAttribute Phone { get; set; }
+        public string EmailAddress { get; set; }
+        public string Phone { get; set; }
 
     }
 }

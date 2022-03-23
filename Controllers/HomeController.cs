@@ -38,6 +38,12 @@ namespace Project2.Controllers
                 .ToList();
             return View(times);
         }
-
+        [HttpGet]
+        public IActionResult FinishForms(int timeid)
+        {
+            ViewBag.TimeSlots = tourContext.TimeSlots.ToList();
+            var time = tourContext.TimeSlots.Single(x => x.TimeId == timeid);
+            return View("Form", time);
+        }
     }
 }

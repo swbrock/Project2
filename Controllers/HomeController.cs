@@ -23,13 +23,14 @@ namespace Project2.Controllers
             return View();
         }
 
-        //    [HttpGet]
-        //    public IActionResult ViewAppointments()
-        //    {
-        //        var appointments = 
-
-        //        return View();
-        //    }
+        public IActionResult ViewAppointments()
+        {
+            var movies = tourContext.Tours
+                .Include(x => x.TimeSlot)
+                .OrderBy(x => x.TimeId)
+                .ToList();
+            return View(movies);
+        }
 
         public IActionResult SignUp()
         {
@@ -39,11 +40,19 @@ namespace Project2.Controllers
             return View(times);
         }
         [HttpGet]
-        public IActionResult FinishForms(int timeid)
+        public IActionResult FinishForm(int timeid)
         {
             ViewBag.TimeSlots = tourContext.TimeSlots.ToList();
             var time = tourContext.TimeSlots.Single(x => x.TimeId == timeid);
             return View("Form", time);
+        }
+        
+        [HttpPost]
+        public IActionResult FinishForm(Tours tour)
+        {
+            tourContext.Update(tour);
+            tourContext.SaveChanges();
+            return RedirectToAction("ViewAppointments");
         }
     }
 }

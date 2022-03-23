@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Tour Appointments";
+}
+
+@model List<Tours>
+@*Create the table to list the movies*@
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Group Name</td>
+            <td>Group Size</td>
+            <td>Date</td>
+            <td>Start Time</td>
+            <td>Email Address</td>
+            <td>Phone Number</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @*For loop to get all the contents from the database*@
+        @foreach (var x in Model)
+        {
+        <tr>
+            <td>@x.GroupName</td>
+            <td>@x.GroupSize</td>
+            <td>@x.TimeSlot.Day</td>
+            <td>@x.TimeSlot.Time</td>
+            <td>@x.EmailAddress</td>
+            <td>@x.Phone</td>
+
+            @*Create edit and delete buttons*@
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-tourid="@x.TourId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Delete" asp-route-tourid="@x.TourId">Delete</a></td>
+        </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,10 +1,33 @@
 ﻿@{
     ViewData["Title"] = "Sign Up For Temple Tour";
 }
+@model List<TimeSlots>
 
 <div class="text-center">
     <h1>Sign Up for Your Tour</h1>
     <br />
     <h3>Available Time Slots</h3>
 </div>
+@*Create the table to list the Available Times*@
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Day</td>
+            <td>Time</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @*For loop to get all the contents from the database*@
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Day</td>
+                <td>@x.Time</td>
+                @*Sign up buttons*@
+                <td><a asp-controller="Home" asp-action="FinishForm" asp-route-tourid="@x.TimeId">Sign Up</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
 

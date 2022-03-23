@@ -35,6 +35,7 @@ namespace Project2.Controllers
         public IActionResult SignUp()
         {
             var times = tourContext.TimeSlots
+                .OrderBy(x => x.IsAvailable)
                 .OrderBy(x => x.TimeId)
                 .ToList();
             return View(times);
@@ -52,7 +53,35 @@ namespace Project2.Controllers
         {
             tourContext.Update(tour);
             tourContext.SaveChanges();
-            return RedirectToAction("ViewAppointments");
+            return RedirectToAction("Index");
+        }
+        public IActionResult Delete(int tourid)
+        {
+            var tour = tourContext.Tours.Single(x => x.TourId == tourid);
+            return View(tour);
+        }
+        [HttpPost]
+        public IActionResult Delete(Tours tour)
+        {
+            tourContext.Tours.Remove(tour);
+            tourContext.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Edit(int tourid)
+        {
+            ViewBag.TimeSlots = tourContext.TimeSlots.ToList();
+
+            var tours = tourContext.Tours.Single(x => x.TourId == tourid);
+            return View("Form", tours);
+        }
+        [HttpPost]
+        public IActionResult Edit(Tours tour)
+        {
+            tourContext.Update(tour);
+            tourContext.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -2,22 +2,18 @@
     ViewData["Title"] = "Sign up for a Tour";
 }
 
-@model Tours
+@model TimeSlots
 
 <h1>Enter Information for your Group</h1>
-<div>
+<div class="font-weight-bolder">
     <form method="post">
         @*This helps us connect the different categories so it doesn't take up space and the user can pick an already made category*@
-        <label asp-for="TimeId">Category: </label>
-        <select asp-for="TimeId">
-            <option value="">Select a Time </option>
-            @foreach (TimeSlots t in ViewBag.TimeSlots)
-            {
-                <option value="@t.TimeId">@t.Day</option>
-            }
-        </select> <br />
+        <label asp-for="@Model.Day">Day: @Model.Day</label>
+        <br />
+        <label asp-for="@Model.Time">Start Time: @Model.Time</label>
+        <br />
 
-        <label asp-for="GroupName">Group Name: </label>
+        @*<label asp-for="GroupName">Group Name: </label>
         <input asp-for="GroupName" /> <br />
 
         <label asp-for="GroupSize">Group Size: </label>
@@ -27,7 +23,7 @@
         <input asp-for="EmailAddress" /> <br />
 
         <label asp-for="Phone">Phone Number: </label>
-        <input asp-for="Phone" /> <br />
+        <input asp-for="Phone" /> <br />*@
 
         <button type="submit">Submit Tour</button>
         @* This is to make sure all the validations are meant upon entry *@

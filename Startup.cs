@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Project2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,11 @@ namespace Project2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            //Configures the database
+            services.AddDbContext<ToursContext>(options =>
+            {
+                options.UseSqlite(Configuration["ConnectionStrings:ToursConnection"]);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,7 +40,7 @@ namespace Project2
             {
                 app.UseDeveloperExceptionPage();
             }
-           
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

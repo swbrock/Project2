@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Project2.Models;
 using System;
@@ -12,13 +13,12 @@ namespace Project2.Controllers
 
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public IActionResult Index()
+        private ToursContext tourContext { get; set; }
+        public HomeController(ToursContext someName)
         {
-            return View();
+            tourContext = someName;
         }
-        public IActionResult SignUp()
+        public IActionResult Index()
         {
             return View();
         }
@@ -30,5 +30,14 @@ namespace Project2.Controllers
 
         //        return View();
         //    }
+
+        public IActionResult SignUp()
+        {
+            var times = tourContext.TimeSlots
+                .OrderBy(x => x.TimeId)
+                .ToList();
+            return View(times);
+        }
+
     }
 }

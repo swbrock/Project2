@@ -9,14 +9,10 @@ using System.Threading.Tasks;
 
 namespace Project2.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
 
         public IActionResult Index()
         {
@@ -26,5 +22,13 @@ namespace Project2.Controllers
         {
             return View();
         }
+
+        //    [HttpGet]
+        //    public IActionResult ViewAppointments()
+        //    {
+        //        var appointments = 
+
+        //        return View();
+        //    }
     }
 }

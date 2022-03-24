@@ -21,12 +21,15 @@
         @*For loop to get all the contents from the database*@
         @foreach (var x in Model)
         {
-            <tr>
-                <td>@x.Day</td>
-                <td>@x.Time</td>
-                @*Sign up buttons*@
-                <td><a asp-controller="Home" asp-action="FinishForm" asp-route-timeid="@x.TimeId">Sign Up</a></td>
-            </tr>
+            @if (x.IsAvailable == true)
+            {
+                <tr>
+                    <td>@x.Day</td>
+                    <td>@x.Time</td>
+                    @*Sign up buttons*@
+                    <td><a asp-controller="Home" asp-action="FinishForm" asp-route-timeid="@x.TimeId">Sign Up</a></td>
+                </tr>
+            }
         }
     </tbody>
 </table>

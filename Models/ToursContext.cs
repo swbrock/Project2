@@ -122,6 +122,7 @@ namespace Project2.Models
                 new TimeSlot { TimeId = 102, Day = "Sunday", IsAvailable = true, Time = "6:00 PM" },
                 new TimeSlot { TimeId = 103, Day = "Sunday", IsAvailable = true, Time = "7:00 PM" },
                 new TimeSlot { TimeId = 104, Day = "Sunday", IsAvailable = true, Time = "8:00 PM" }
+      
             );
 
         }

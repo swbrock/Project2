@@ -10,11 +10,14 @@
     <p>Your Time is @ViewBag.time</p>
     <form method="post">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <input type="hidden" asp-for="TimeSlot" value=@ViewBag.timeSlot />
         @*This helps us connect the different categories so it doesn't take up space and the user can pick an already made category*@
         <label asp-for="GroupName">Group Name: </label>
         <input asp-for="GroupName" /> <br />
 =======
+=======
+>>>>>>> Stashed changes
         <div asp-validation-summary="All"></div>
         @*This helps us connect the different categories so it doesn't take up space and the user can pick an already made category*@
         <label asp-for="@Model.Day">Day: @Model.Day</label>
@@ -26,6 +29,9 @@
 
         <label asp-for="@Model.GroupName">Group Name: </label>
                <input asp-for="@Model.GroupName" /> <br />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
                <label asp-for="@Model.GroupSize">Group Size: </label>
@@ -35,8 +41,14 @@
                <input asp-for="@Model.EmailAddress" /> <br />
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         <label asp-for="Phone">Phone Number: </label>
         <input asp-for="Phone" /> <br />
+=======
+               <label asp-for="@Model.Phone">Phone Number: </label>
+               <input asp-for="@Model.Phone" /> <br />
+        *@
+>>>>>>> Stashed changes
 =======
                <label asp-for="@Model.Phone">Phone Number: </label>
                <input asp-for="@Model.Phone" /> <br />

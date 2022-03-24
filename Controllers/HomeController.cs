@@ -52,8 +52,7 @@ namespace Project2.Controllers
         [HttpPost]
         public IActionResult FinishForm(Tours tour)
         {
-            var timeId = tour.TimeId;
-            
+            tourContext.TimeSlots.Single(x => x.TimeId == tour.TimeId).IsAvailable = false;
             tourContext.Update(tour);
             tourContext.SaveChanges();
             return RedirectToAction("Index");
@@ -66,6 +65,7 @@ namespace Project2.Controllers
         [HttpPost]
         public IActionResult Delete(Tours tour)
         {
+            //tourContext.TimeSlots.Single(x => x.TimeId == tour.TimeId).IsAvailable = true;
             tourContext.Tours.Remove(tour);
             tourContext.SaveChanges();
 
@@ -88,5 +88,6 @@ namespace Project2.Controllers
             tourContext.SaveChanges();
             return RedirectToAction("Index");
         }
+        
     }
 }

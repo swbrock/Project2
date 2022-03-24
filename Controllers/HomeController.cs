@@ -35,7 +35,7 @@ namespace Project2.Controllers
         public IActionResult SignUp()
         {
             var times = tourContext.TimeSlots
-                .OrderBy(x => x.IsAvailable)
+                .Where(x => x.IsAvailable == true)
                 .OrderBy(x => x.TimeId)
                 .ToList();
             return View(times);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project2.Models
 {
-    public class TimeSlots
+    public class TimeSlot
     {
         [Key]
         [Required]

@@ -29,7 +29,7 @@
             <td>@x.Phone</td>
 
             @*Create edit and delete buttons*@
-            <td><a asp-controller="Home" asp-action="Edit" asp-route-tourid="@x.TourId">Edit</a></td>
+            <td><a asp-controller="Home" asp-action="Edit" asp-route-tourid="@x.TourId" asp-route-timeid="@x.TimeId">Edit</a></td>
             <td><a asp-controller="Home" asp-action="Delete" asp-route-tourid="@x.TourId">Delete</a></td>
         </tr>
         }

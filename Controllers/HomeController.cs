@@ -71,15 +71,17 @@ namespace Project2.Controllers
 
             return RedirectToAction("Index");
         }
-        [HttpGet]
-        public IActionResult Edit(int tourid)
+        [HttpGet("{TourId}/{TimeId}")]
+        public IActionResult Edit(int tourid, int timeid)
         {
-            ViewBag.TimeSlots = tourContext.TimeSlots.ToList();
+            ViewBag.time = tourContext.TimeSlots.Single(x => x.TimeId == timeid).Time;
+            ViewBag.day = tourContext.TimeSlots.Single(x => x.TimeId == timeid).Day;
+            ViewBag.timeSlot = tourContext.TimeSlots.Single(x => x.TimeId == timeid);
 
             var tours = tourContext.Tours.Single(x => x.TourId == tourid);
             return View("Form", tours);
         }
-        [HttpPost]
+        [HttpPost("{TourId}/{TimeId}")]
         public IActionResult Edit(Tours tour)
         {
             tourContext.Update(tour);

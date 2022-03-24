@@ -43,14 +43,17 @@ namespace Project2.Controllers
         [HttpGet]
         public IActionResult FinishForm(int timeid)
         {
-            ViewBag.TimeSlots = tourContext.TimeSlots.ToList();
-            var time = tourContext.TimeSlots.Single(x => x.TimeId == timeid);
-            return View("Form", time);
+            ViewBag.time = tourContext.TimeSlots.Single(x => x.TimeId == timeid).Time;
+            ViewBag.day = tourContext.TimeSlots.Single(x => x.TimeId == timeid).Day;
+            ViewBag.timeSlot = tourContext.TimeSlots.Single(x => x.TimeId == timeid);
+            return View("Form");
         }
         
         [HttpPost]
         public IActionResult FinishForm(Tours tour)
         {
+            var timeId = tour.TimeId;
+            
             tourContext.Update(tour);
             tourContext.SaveChanges();
             return RedirectToAction("Index");

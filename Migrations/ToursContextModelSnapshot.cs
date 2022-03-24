@@ -15,7 +15,7 @@ namespace Project2.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.22");
 
-            modelBuilder.Entity("Project2.Models.TimeSlots", b =>
+            modelBuilder.Entity("Project2.Models.TimeSlot", b =>
                 {
                     b.Property<int>("TimeId")
                         .ValueGeneratedOnAdd()
@@ -802,7 +802,7 @@ namespace Project2.Migrations
 
             modelBuilder.Entity("Project2.Models.Tours", b =>
                 {
-                    b.HasOne("Project2.Models.TimeSlots", "TimeSlot")
+                    b.HasOne("Project2.Models.TimeSlot", "TimeSlot")
                         .WithMany()
                         .HasForeignKey("TimeSlotTimeId")
                         .OnDelete(DeleteBehavior.Cascade)
